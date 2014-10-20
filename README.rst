@@ -297,7 +297,7 @@ Add the following to your ``composer.json``:
 
     {
         "require": {
-            "netresearch/jsonmapper": "0.*"
+            "avvertix/jsonmapper": "0.*"
         }
     }
 
@@ -325,7 +325,7 @@ JsonMapper is licensed under the `AGPL v3`__ or later.
 __ http://www.gnu.org/licenses/agpl
 
 
-Author
+Original Author
 ======
 `Christian Weiske`__, `Netresearch GmbH & Co KG`__
 
