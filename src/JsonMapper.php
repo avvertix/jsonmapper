@@ -68,7 +68,7 @@ class JsonMapper
     {
         $strClassName = get_class($object);
         $rc = new ReflectionClass($object);
-        $strNs = $rc->getNamespaceName();
+        $strNs = method_exists($rc, 'getNamespaceName') ? $rc->getNamespaceName() : null;
         $providedProperties = array();
         foreach ($json as $key => $jvalue) {
             $providedProperties[$key] = true;
@@ -108,7 +108,7 @@ class JsonMapper
 
             if ($type{0} != '\\') {
                 //create a full qualified namespace
-                if ($strNs != '') {
+                if (!is_null($strNs) && $strNs != '') {
                     $type = '\\' . $strNs . '\\' . $type;
                 }
             }
@@ -132,7 +132,7 @@ class JsonMapper
             if ($array !== null) {
                 if ($subtype{0} != '\\') {
                     //create a full qualified namespace
-                    if ($strNs != '') {
+                    if (!is_null($strNS) && $strNs != '') {
                         $subtype = $strNs . '\\' . $subtype;
                     }
                 }
