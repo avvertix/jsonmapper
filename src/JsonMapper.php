@@ -233,10 +233,14 @@ class JsonMapper
      */
     protected function inspectProperty(ReflectionClass $rc, $name)
     {
-        if ($rc->hasProperty($name)) {
-            $rprop = $rc->getProperty($name);
-            $docblock = $rprop->getDocComment();
-            $annotations = $this->parseAnnotations($docblock);
+        $rprop = $rc->getProperty($name);
+        $docblock = $rprop->getDocComment();
+        $annotations = $this->parseAnnotations($docblock);
+
+        $preferset = isset($annotations['preferset']);
+
+        if ($rc->hasProperty($name) && !$preferset) {
+            
             if (!isset($annotations['var'][0])) {
                 return array(true, null, null);
             }
