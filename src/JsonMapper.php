@@ -132,7 +132,7 @@ class JsonMapper
             if ($array !== null) {
                 if ($subtype{0} != '\\') {
                     //create a full qualified namespace
-                    if (!is_null($strNS) && $strNs != '') {
+                    if (!is_null($strNs) && $strNs != '') {
                         $subtype = $strNs . '\\' . $subtype;
                     }
                 }
